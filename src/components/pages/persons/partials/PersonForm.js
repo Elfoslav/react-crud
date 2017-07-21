@@ -7,7 +7,6 @@ import PersonsStore from '../../../stores/PersonsStore';
 export default class PersonForm extends React.Component {
   constructor(props) {
     super(props);
-    console.log('props', props);
     this.state = { 
       submitted: false, 
       person: props.person || {} 

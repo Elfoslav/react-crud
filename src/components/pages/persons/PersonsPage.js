@@ -31,7 +31,6 @@ export default class PersonsPage extends React.Component {
   }
   
   deletePerson(id) {
-    console.log('deleting: ', id);
     this.setState({
       persons: PersonsStore.findAll()
     });

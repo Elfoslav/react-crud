@@ -8,6 +8,8 @@ let PersonsStore = {
     { id: 6, name: 'Marry', surname: 'Clinton', age: 28},
   ],
   
+  lastId: 6,
+  
   findAll: function() {
     return this.data;
   },
@@ -43,15 +45,28 @@ let PersonsStore = {
   },
   
   add: function(person) {
+    person.id = ++this.lastId;
     this.data.push(person);
   },
   
   edit: function(id, data) {
-    this.data[id - 1] = data;
+    this.data.map((person, i) => {
+      if (person.id === parseInt(id, 10)) {
+        this.data[i] = data;
+      }            
+      return person;
+    });
   },
   
   delete: function(id) {
-    console.log('deleting: ', id, this.data.splice(id - 1, 1));
+    let indexToDelete = -1;
+    this.data.map((person, i) => {
+      if (person.id === parseInt(id, 10)) {
+        indexToDelete = i;
+      }
+      return person;
+    });
+    this.data.splice(indexToDelete - 1, 1);
   }
 }
 
