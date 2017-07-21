@@ -62,11 +62,14 @@ let PersonsStore = {
     let indexToDelete = -1;
     this.data.map((person, i) => {
       if (person.id === parseInt(id, 10)) {
+        console.log('Index to delete: ', i, person);
         indexToDelete = i;
       }
       return person;
     });
-    this.data.splice(indexToDelete - 1, 1);
+    if (indexToDelete > -1) {
+      this.data.splice(indexToDelete, 1);
+    }
   }
 }
 
