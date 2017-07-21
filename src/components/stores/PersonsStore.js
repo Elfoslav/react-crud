@@ -48,6 +48,10 @@ let PersonsStore = {
   
   edit: function(id, data) {
     this.data[id - 1] = data;
+  },
+  
+  delete: function(id) {
+    console.log('deleting: ', id, this.data.splice(id - 1, 1));
   }
 }
 

@@ -30,6 +30,13 @@ export default class PersonsPage extends React.Component {
     this.getPersons();
   }
   
+  deletePerson(id) {
+    console.log('deleting: ', id);
+    this.setState({
+      persons: PersonsStore.findAll()
+    });
+  }
+  
   render() {
     return(
       <div id="persons-page">
@@ -43,7 +50,7 @@ export default class PersonsPage extends React.Component {
           <Grid.Column>
             <br />
             {this.state.persons.map((person, i) =>
-              <Person {...person} key={i} />
+              <Person {...person} key={i} deletePerson={this.deletePerson.bind(this)} />
             )}
             {this.state.persons.length > 0 ? '' : <p>No data, yet.</p>}
           </Grid.Column>
